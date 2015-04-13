@@ -1,0 +1,27 @@
+<h2>Clientes Principal</h2>
+<!-- ng-app="clientesController" -->
+<div ng-init="loadAll()">
+  <div>
+  	<button class="btn btn-primary" ng-click="teste()">teste</button>
+    <a href="#/clientes/new" class="pull-right ">Novo</a>
+  </div>
+  <table id="tableData" class="table table-bordered table-hover table-striped">
+    <thead>
+      <tr>
+        <th width="10%">Id</th>
+        <th>Nome</th>
+        <th>Fone</th>
+        <th width="10"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in rows | startFrom: currentPage*pageSize| limitTo: pageSize">
+        <td>{{row.id}}</td>
+        <td><a href='#/cliente/{{row.id}}'>{{row.nome}}</a></td>
+        <td>{{row.fone}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary" ng-click="currentPage=currentPage-1" ng-disabled="currentPage == 0" >&larr; Voltar</button>
+  <button class="btn btn-primary pull-right" ng-click="currentPage=currentPage+1" ng-disabled="currentPage >= rows.length/pageSize - 1">Avançar &rarr;</button>
+</div>
